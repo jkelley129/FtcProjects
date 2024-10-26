@@ -296,6 +296,7 @@ public class Odometry extends LinearOpMode {
 
             if(highBasket) highBasketPosition();
             if(reach) reach();
+
             // Calculate the angle to the target (in radians)
             double targetAngle = Math.atan2(deltaY, deltaX);
 
