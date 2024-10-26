@@ -69,7 +69,7 @@ public class Odometry extends LinearOpMode {
     final double HEADING_TOLERANCE = 1;
     double distanceToTarget = 0;
 
-    double kP = 0.0135;// TUNE THIS!!! THIS IS JUST A GUESS!!!!!!
+    final double kP = 0.0135;// TUNE THIS!!! THIS IS JUST A GUESS!!!!!!
 
     private boolean highBasket = false;
     private boolean reach = false;
@@ -128,9 +128,10 @@ public class Odometry extends LinearOpMode {
         waitForStart();
 
         if(opModeIsActive()){
-            //Make this a loop instead and add control to make sure it only runs once for certain methods.
             telemetry.addLine("OpMode Running");
             telemetry.update();
+
+            //These are just examples of what the methods look like when called
             open();
             reach = true;
             driveToWithHeading(0,0, 90);
@@ -321,7 +322,7 @@ public class Odometry extends LinearOpMode {
             setMotorPowers(leftFrontPower, rightFrontPower, leftBackPower, rightBackPower);
 
 
-            // Update telemetry for debugging
+            // Update telemetry
             telemetry.addData("X Position", robotX);
             telemetry.addData("Y Position", robotY);
             telemetry.addData("Distance to Target", distanceToTarget);
@@ -379,6 +380,7 @@ public class Odometry extends LinearOpMode {
             double unitX = Math.cos(targetAngle);
             double unitY = Math.sin(targetAngle);
 
+            // Calculate Speed
             calculateDriveSpeed();
 
             // Apply mecanum wheel algorithm using unit circle coordinates
